@@ -1,0 +1,38 @@
+<template name = "lstOuvertures">
+
+{{#if currentUser}}
+    <h1> Liste des ouvertures  </h1>
+  {{> reactiveOuvertures}}
+{{else}}
+    <div class="text-center">
+        <!--
+        <h2> Vous devez d'abord vous identifier </h2>
+        -->
+    </div>
+{{/if}}
+
+</template>
+
+<template name="reactiveOuvertures">
+  {{> reactiveTable id="reactivelstOuvertures" class="table table-bordered table-hover table-striped" collection=ouvertures settings=settings}}
+    <!--
+  {{#if isadmin}}
+    {{> majOuverture}}
+  {{/if}}
+  -->
+</template>
+
+<template name="majOuverture">
+    <div name = "majOuverture">
+      {{>autoformModals}}
+        <form class="form-inline">
+          {{#afModal class="btn btn-primary" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" collection="SitesOuverturesProfils" type="insert" operation="insert" formId="frmOuverture" fields="Site,Ouverture,DateOuverture,HeureDebut,HeureFin,NbPostes_a,NbPostes_c" title="Nouvelle ouverture" placeholder=true}}
+              Nouveau
+          {{/afModal}}
+
+          {{#afModal class="btn btn-primary" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" collection="SitesOuverturesProfils" type="update" operation="update"  formId="frmOuverture" doc=ouvertureId fields="Site,Ouverture,DateOuverture,HeureDebut,HeureFin,NbPostes_a,NbPostes_c" title="Mise à jour de l'ouverture courante" placeholder=true}}
+              Modifier
+          {{/afModal}}
+        </form>
+    </div>
+</template>

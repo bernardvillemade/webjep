@@ -1,0 +1,261 @@
+<template name="affectations">
+{{#if currentUser}}
+    <div class = "filtreBenevoles">
+      {{> filtreBenevoles}}
+    </div>
+
+    <div class = "filtreSites">
+      {{> filtreSites}}
+    </div>
+    <div class = "row">
+    <div class = "listeBenevoles">
+      {{> listeBenevoles}}
+    </div>
+
+    <div class = "listeSites">
+      {{> listeSites}}
+    </div>
+    </div>
+    <div class="row">
+    <div class = "listeBenevolesSites">
+      {{> listeBenevolesSites}}
+    </div>
+
+    <div class = "listeSitesBenevoles">
+      {{> listeSitesBenevoles}}
+    </div>
+    </div>
+{{else}}
+  <div class="text-center">
+  </div>
+{{/if}}
+
+</template>
+
+<template name="filtreBenevoles">
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"  style="max-height: 45px;">
+                <h6>Filtre bénévoles</h6>
+            </div>
+            <div class="panel-body">
+                <form name="filtreBenevoles">
+                    <div class="col-md-4">
+                        <div class = "Nom">
+                            Nom <input type="text" name = "Nom" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="Prenom">
+                            Prénom <input type="text" name = "Prenom" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="Profil">
+                            Profil <input type="text" name = "Profil" class="form-control">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</template>
+
+<template name="filtreSites">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"  style="max-height: 45px;">
+                <h6>Filtre Sites</h6>
+            </div>
+            <div class="panel-body">
+                <form name="filtreSites">
+                    <div class="col-md-4">
+                        <div class = "Site">
+                            Site <input type="text" name = "Site" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="Ouverture">
+                            Ouverture <input type="text" name = "Ouverture" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="Profil">
+                            Profil <input type="text" name = "Profil" class="form-control">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name = "listeBenevoles">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="max-height: 45px;">
+                <h6>Liste des Bénévoles*Profils </h6>
+            </div>
+            <div style="max-height: 510px;">
+                 <div class="panel-body" >
+                  {{#autoForm id="IdBenevolesProfils_b" type = "disabled" collection=Collections.BenevolesProfils_b}}
+                      <table class="table fixed-headers-benevoles table-bordered table-condensed table-striped table-hover table-responsive"  >
+                          <thead>
+                          <tr>
+                              <th style="text-align: left;">{{afFieldLabelText name='Prenom'}}</th>
+                              <th style="text-align: left;">{{afFieldLabelText name='Nom'}}</th>
+                              <th style="text-align: left;">{{afFieldLabelText name='Profil'}}</th>
+                              <th style="text-align: center;">{{afFieldLabelText name='Telephone'}}</th>
+                              <th style="text-align: center;">{{afFieldLabelText name='Etudiant'}}</th>
+                              <th style="text-align: center;">{{afFieldLabelText name='BTS'}}</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {{#each BenevolesProfils_b}}
+                              <tr id="bp_{{IdBenevoleProfil}}" class="BenevolesProfils_b-row {{#if isSelectedBenevoleProfil}}success {{/if}}" >
+                                  <td style="text-align: left;">{{Prenom}}</td>
+                                  <td style="text-align: left;">{{Nom}} {{nom}}</td>
+                                  <td style="text-align: left;">{{Profil}}</td>
+                                  <td style="text-align: center;">{{Telephone}}</td>
+                                  <td style="text-align: center;">{{fmtEtudiant}}</td>
+                                  <td style="text-align: center;">{{fmtBTS}}</td>
+
+                              </tr>
+                          {{/each}}
+                          </tbody>
+                      </table>
+                   {{/autoForm}}
+                  </div>
+            </div>
+        </div>
+    </div>
+</template>
+<template name = "listeSites">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"  style="max-height: 45px;">
+                <h6>Liste des Sites*Ouvertures*Profils </h6>
+            </div>
+            <div style="max-height: 510px;">
+                <div class="panel-body">
+                  {{#autoForm id="OuverturesSitesProfils_o" type = "disabled" collection=Collections.OuverturesSitesProfils_o}}
+                      <table class="table fixed-headers-sites table-bordered table-condensed table-striped table-hover table-responsive">
+                          <thead>
+                          <tr>
+                              <th style="text-align: left;">{{afFieldLabelText name='Site'}}</th>
+                              <th style="text-align: left;">{{afFieldLabelText name='Ouverture'}}</th>
+                              <th style="text-align: left;">{{afFieldLabelText name='Profil'}}</th>
+                              <th style="text-align: center;">{{afFieldLabelText name='NbPostes'}}</th>
+                              <th style="text-align: center;">{{afFieldLabelText name='NbAffectes'}}</th>
+                              <th style="text-align: center;">{{afFieldLabelText name='NbBTS'}}</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {{#each OuverturesSitesProfils_o}}
+                              <tr Id="osp_{{IdOuvertureSiteProfil}}" class="OuverturesSitesProfils_o-row {{#if isSelectedOuvertureSiteProfil}}success{{/if}}">
+                                  <td style="text-align: left;">{{Site}}</td>
+                                  <td style="text-align: left;">{{Ouverture}}</td>
+                                  <td style="text-align: left;">{{Profil}}</td>
+                                  <td style="text-align: center;">{{NbPostes}}</td>
+                                  <td style="text-align: center;">{{NbAffectes}}</td>
+                                  <td style="text-align: center;">{{NbBTS}}</td>
+                              </tr>
+                          {{/each}}
+                          </tbody>
+                      </table>
+                    {{/autoForm}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name = "listeBenevolesSites">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"  style="max-height: 45px;">
+                <h6>Liste des (Sites*Ouvertures) auxquels le bénévole courant est affecté</h6>
+            </div>
+            <div class="pre-scrollable">
+                <div class="panel-body">
+                  {{#autoForm id="IdBenevolesOuverturesSites_b" type = "disabled" collection=Collections.BenevolesOuverturesSites_b }}
+                      <table class="table table-bordered table-condensed table-striped table-hover table-responsive">
+                          <thead>
+                          <tr>
+                              <th style="text-align: left;">{{afFieldLabelText name='Site'}}</th>
+                              <th style="text-align: left;">{{afFieldLabelText name='Ouverture'}}</th>
+                              <th style="text-align: center;">{{afFieldLabelText name='SiteNp'}}</th>
+                              <th style="text-align: center;">{{afFieldLabelText name='OuvNp'}}</th>
+                              <th style="text-align: center;">{{afFieldLabelText name='NonSat'}}</th>
+                              <th style="text-align: center;">{{afFieldLabelText name='DateSouhait'}}</th>
+                              <th style="text-align: center;">{{afFieldLabelText name='DateAffectation'}}</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {{#each BenevolesOuverturesSites_b}}
+                              <tr class="BenevolesOuverturesSites_b-row {{#if isSelectedBenevoleOuvertureSiteProfil}}success{{/if}}">
+                                  <td style="text-align: left;">{{Site}}</td>
+                                  <td style="text-align: left;">{{Ouverture}}</td>
+                                  <td style="text-align: center;">{{fmtSiteNp}}</td>
+                                  <td style="text-align: center;">{{fmtOuvNp}}</td>
+                                  <td style="text-align: center;">{{fmtNonSat}}</td>
+                                  <td style="text-align: center;">{{fmtDateSouhait}}</td>
+                                  <td style="text-align: center;">{{fmtDateAffectation}}</td>
+                              </tr>
+                          {{/each}}
+                          </tbody>
+                      </table>
+                  {{/autoForm}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name = "listeSitesBenevoles">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"  style="max-height: 45px;">
+                <h6>Liste des bénévoles affectés au (Site*Ouverture*Profil) courant </h6>
+            </div>
+            <div class="pre-scrollable">
+                <div class="panel-body">
+                 {{#autoForm id="OuverturesSitesBenevoles_o" type = "disabled" collection=Collections.OuverturesSitesBenevoles_o}}
+                     <table class="table table-bordered table-condensed table-striped table-hover table-responsive">
+                         <thead>
+                         <tr>
+                             <th style="text-align: left;">{{afFieldLabelText name='Prenom'}}</th>
+                             <th style="text-align: left;">{{afFieldLabelText name='Nom'}}</th>
+                             <th style="text-align: center;">{{afFieldLabelText name='SiteNp'}}</th>
+                             <th style="text-align: center;">{{afFieldLabelText name='OuvNp'}}</th>
+                             <th style="text-align: center;">{{afFieldLabelText name='NonSat'}}</th>
+                             <th style="text-align: center;">{{afFieldLabelText name='DateSouhait'}}</th>
+                             <th style="text-align: center;">{{afFieldLabelText name='DateAffectation'}}</th>
+                             <th style="text-align: center;">{{afFieldLabelText name='BTS'}}</th>
+                         </tr>
+                         </thead>
+                         <tbody>
+                         {{#each OuverturesSitesBenevoles_o}}
+                             <tr class="OuverturesSitesBenevoles_o-row {{#if isSelectedOuvertureSiteProfilBenevole}}success{{/if}}">
+                                 <td style="text-align: left;">{{Prenom}}</td>
+                                 <td style="text-align: left;">{{Nom}}</td>
+                                 <td style="text-align: center;">{{fmtSiteNp}}  </td>
+                                 <td style="text-align: center;">{{fmtOuvNp}}</td>
+                                 <td style="text-align: center;">{{fmtNonSat}}</td>
+                                 <td style="text-align: center;">{{fmtDateSouhait}}</td>
+                                 <td style="text-align: center;">{{fmtDateAffectation}}</td>
+                                 <td style="text-align: center;">{{fmtBTS}}</td>
+                            </tr>
+                         {{/each}}
+                         </tbody>
+                     </table>
+                 {{/autoForm}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+

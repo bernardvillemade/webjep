@@ -1,0 +1,27 @@
+<template name="import">
+  {{#if isadmin}}
+  <div class="import">
+    {{> importJEP}}
+  </div>
+{{/if}}
+</template>
+
+<template name="importJEP">
+    <div class="ListeTables">
+        <table>
+        <tbody>
+          {{#each table in tables}}
+          <tr>
+            <td>{{table.name}} = </td>
+            <td>{{table.nb}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+        </table>
+        <form class="form-inline">
+            <div class="importer">
+              <button type="button" class="btn btn-primary">Importer</button>
+            </div>
+        </form>
+    </div>
+</template>

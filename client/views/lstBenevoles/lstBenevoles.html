@@ -1,0 +1,37 @@
+<template name = "lstBenevoles">
+
+{{#if currentUser}}
+
+    <h1> Liste des bénévoles  </h1>
+  {{> reactiveBenevoles}}
+{{else}}
+    <div class="text-center">
+        <!--
+        <h2> Vous devez d'abord vous identifier </h2>
+        -->
+    </div>
+{{/if}}
+
+</template>
+
+<template name="reactiveBenevoles">
+    {{> reactiveTable id="reactivelstBenevoles" class="table table-bordered table-hover table-striped"  collection=benevoles settings=settings}}
+    {{#if isadmin}}
+  {{> majBenevole}}
+  {{/if}}
+</template>
+
+<template name="majBenevole">
+    <div name = "majBenevole">
+  {{>autoformModals}}
+        <form class="form-inline">
+          {{#afModal class="btn btn-primary" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" collection="Benevoles" type="insert" operation="insert" formId='frmBenevole' fields="nom,Prenom,civilite,mail,TelPortable,TelPersonnel,TelBureau,adresse1,CodePostal,ville,Conferencier,Administrateur,etudiant,Inactif" title="Nouveau bénévole" placeholder=true}}
+              Nouveau
+          {{/afModal}}
+
+          {{#afModal class="btn btn-primary" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" collection="Benevoles" type="update" operation="update"  formId='frmBenevole' doc=benevoleId fields="nom,Prenom,civilite,mail,TelPortable,TelPersonnel,TelBureau,adresse1,CodePostal,ville,Conferencier,Administrateur,etudiant,Inactif" title="Mise à jour du bénévole courant" placeholder=true}}
+              Modifier
+          {{/afModal}}
+        </form>
+    </div>
+</template>

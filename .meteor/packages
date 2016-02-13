@@ -1,0 +1,56 @@
+# Meteor packages used by this project, one per line.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+
+# Core
+underscore
+jquery
+spiderable
+reactive-var
+
+# Community
+mrt:jquery-easing
+iron:router
+momentjs:moment
+aldeed:moment-timezone
+mrt:numeral
+dburles:collection-helpers
+aldeed:collection2
+sacha:spin
+zimme:active-route
+aldeed:delete-button
+aldeed:autoform-bs-datepicker
+aldeed:autoform-select2
+aldeed:autoform
+aldeed:autoform-bs-button-group-input
+aldeed:autoform-bs-datetimepicker
+aldeed:template-extension
+comerc:bs-typeahead
+comerc:autoform-typeahead
+comerc:autoform-selectize
+vazco:universe-autoform-select
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
+monbro:mongodb-mapreduce-aggregation
+aldeed:tabular
+aslagle:reactive-table
+anti:i18n
+pascoual:bootstrap-contextmenu
+yogiben:autoform-modals
+matb33:collection-hooks
+accounts-password
+twbs:bootstrap
+ian:accounts-ui-bootstrap-3

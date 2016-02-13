@@ -1,0 +1,10 @@
+<template name="saisieAffectations">
+  {{#if currentUser}}
+      {{#if isBenevoleCourant}}
+
+      {{else}}
+        {{> identBenevole}}
+      {{/if}}
+    {{> Affectations}}
+  {{/if}}
+</template>

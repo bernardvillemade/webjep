@@ -1,0 +1,29 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'aldeed:tabular' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.1
+4 verbose install initial load of C:\WebApp\AppMeteor\webjep\package.json
+5 verbose readDependencies loading dependencies from C:\WebApp\AppMeteor\webjep\package.json
+6 verbose stack Error: Unsupported URL Type: aldeed:tabular
+6 verbose stack     at parseUrl (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-package-arg\npa.js:168:13)
+6 verbose stack     at npa (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-package-arg\npa.js:75:12)
+6 verbose stack     at resolver (C:\Program Files\nodejs\node_modules\npm\lib\install.js:845:42)
+6 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:52:35
+6 verbose stack     at Array.forEach (native)
+6 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:52:11
+6 verbose stack     at Array.forEach (native)
+6 verbose stack     at asyncMap (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:51:8)
+6 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\install.js:703:5
+6 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\install.js:325:20
+7 verbose cwd C:\WebApp\AppMeteor\webjep
+8 error Windows_NT 6.1.7601
+9 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "aldeed:tabular"
+10 error node v4.2.1
+11 error npm  v2.14.7
+12 error Unsupported URL Type: aldeed:tabular
+13 error If you need help, you may report this error at:
+13 error     <https://github.com/npm/npm/issues>
+14 verbose exit [ 1, true ]

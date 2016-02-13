@@ -1,0 +1,39 @@
+<template name = "lstSites">
+
+{{#if currentUser}}
+
+    <h1> Liste des sites  </h1>
+  {{> reactiveSites}}
+{{else}}
+    <div class="text-center">
+        <!--
+        <h2> Vous devez d'abord vous identifier </h2>
+        -->
+    </div>
+{{/if}}
+
+</template>
+<template name="reactiveSites">
+  {{> reactiveTable id="reactivelstSites" class="table table-bordered table-hover table-striped" collection=sites settings=settings}}
+    <!--
+  {{#if isadmin}}
+    {{> majSite}}
+  {{/if}}
+  -->
+</template>
+
+<template name="majSite">
+    <div name = "majSite">
+      {{>autoformModals}}
+
+        <form class="form-inline">
+          {{#afModal class="btn btn-primary" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" collection="Sites" type="insert" operation="insert" formId="frmSite" fields="Designation,Adresse1,CodePostal,Ville,Correspondant,Mail,Telephone,Ferme,DateDerniereModification" title="Nouveau site" placeholder=true}}
+              Nouveau
+          {{/afModal}}
+
+          {{#afModal class="btn btn-primary" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" collection="Sites" type="update" operation="update"  formId="frmSite" doc=siteId fields="Designation,Adresse1,CodePostal,Ville,Correspondant,Mail,Telephone,Ferme,DateDerniereModification" title="Mise à jour du site courant" placeholder=true}}
+              Modifier
+          {{/afModal}}
+        </form>
+    </div>
+</template>
